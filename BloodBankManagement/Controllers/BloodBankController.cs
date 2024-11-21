@@ -9,8 +9,131 @@ namespace BloodBankManagement.Controllers
     [Route("api/[controller]")]
     public class BloodBankController : ControllerBase
     {
-        private static List<BloodBankEntry> _entries = new();
-        private static int _nextId = 1;
+        private static List<BloodBankEntry> _entries = new()
+        {
+            new BloodBankEntry
+            {
+                Id = 1,
+                DonorName = "John Doe",
+                Age = 30,
+                BloodType = "A+",
+                ContactInfo = "john.doe@example.com",
+                Quantity = 500,
+                CollectionDate = DateTime.Now.AddDays(-10),
+                ExpirationDate = DateTime.Now.AddDays(20),
+                Status = "Available"
+            },
+            new BloodBankEntry
+            {
+                Id = 2,
+                DonorName = "Jane Smith",
+                Age = 25,
+                BloodType = "O+",
+                ContactInfo = "jane.smith@example.com",
+                Quantity = 300,
+                CollectionDate = DateTime.Now.AddDays(-5),
+                ExpirationDate = DateTime.Now.AddDays(25),
+                Status = "Available"
+            },
+            new BloodBankEntry
+            {
+                Id = 3,
+                DonorName = "Alex Johnson",
+                Age = 40,
+                BloodType = "B-",
+                ContactInfo = "alex.johnson@example.com",
+                Quantity = 450,
+                CollectionDate = DateTime.Now.AddDays(-15),
+                ExpirationDate = DateTime.Now.AddDays(15),
+                Status = "Requested"
+            },
+            new BloodBankEntry
+            {
+                Id = 4,
+                DonorName = "Emily Davis",
+                Age = 35,
+                BloodType = "AB+",
+                ContactInfo = "emily.davis@example.com",
+                Quantity = 600,
+                CollectionDate = DateTime.Now.AddDays(-20),
+                ExpirationDate = DateTime.Now.AddDays(10),
+                Status = "Expired"
+            },
+            new BloodBankEntry
+            {
+                Id = 5,
+                DonorName = "Michael Brown",
+                Age = 29,
+                BloodType = "A-",
+                ContactInfo = "michael.brown@example.com",
+                Quantity = 400,
+                CollectionDate = DateTime.Now.AddDays(-7),
+                ExpirationDate = DateTime.Now.AddDays(23),
+                Status = "Available"
+            },
+            new BloodBankEntry
+            {
+                Id = 6,
+                DonorName = "Sarah Wilson",
+                Age = 50,
+                BloodType = "O-",
+                ContactInfo = "sarah.wilson@example.com",
+                Quantity = 700,
+                CollectionDate = DateTime.Now.AddDays(-3),
+                ExpirationDate = DateTime.Now.AddDays(27),
+                Status = "Available"
+            },
+            new BloodBankEntry
+            {
+                Id = 7,
+                DonorName = "Chris Martin",
+                Age = 34,
+                BloodType = "B+",
+                ContactInfo = "chris.martin@example.com",
+                Quantity = 350,
+                CollectionDate = DateTime.Now.AddDays(-8),
+                ExpirationDate = DateTime.Now.AddDays(22),
+                Status = "Requested"
+            },
+            new BloodBankEntry
+            {
+                Id = 8,
+                DonorName = "Laura Garcia",
+                Age = 28,
+                BloodType = "AB-",
+                ContactInfo = "laura.garcia@example.com",
+                Quantity = 480,
+                CollectionDate = DateTime.Now.AddDays(-12),
+                ExpirationDate = DateTime.Now.AddDays(18),
+                Status = "Available"
+            },
+            new BloodBankEntry
+            {
+                Id = 9,
+                DonorName = "Daniel Lee",
+                Age = 45,
+                BloodType = "A+",
+                ContactInfo = "daniel.lee@example.com",
+                Quantity = 550,
+                CollectionDate = DateTime.Now.AddDays(-9),
+                ExpirationDate = DateTime.Now.AddDays(21),
+                Status = "Requested"
+            },
+            new BloodBankEntry
+            {
+                Id = 10,
+                DonorName = "Sophia Martinez",
+                Age = 32,
+                BloodType = "O+",
+                ContactInfo = "sophia.martinez@example.com",
+                Quantity = 300,
+                CollectionDate = DateTime.Now.AddDays(-4),
+                ExpirationDate = DateTime.Now.AddDays(26),
+                Status = "Available"
+            }
+        };
+
+        private static int _nextId = 11;
 
         [HttpPost]
         public IActionResult Create(BloodBankEntry entry)
@@ -19,6 +142,7 @@ namespace BloodBankManagement.Controllers
             _entries.Add(entry);
             return CreatedAtAction(nameof(GetById), new { id = entry.Id }, entry);
         }
+
 
         [HttpGet]
         public IActionResult GetAll([FromQuery] int? page, [FromQuery] int? size)
