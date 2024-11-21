@@ -1,4 +1,6 @@
-CRUD Operations
+The BloodBank Management handles the following APIs. Screenshots of Swagger and Postman are put in Screenshots Folder.
+
+1. CRUD Operations
 
 Create (POST /api/bloodbank): Add a new entry to the blood bank list. The input should include donor details, blood type, quantity, and collection/expiration dates.
 
